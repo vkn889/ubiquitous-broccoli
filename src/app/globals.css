@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/*
+  Viraat Portfolio, "gradient wave" design system.
+  A full-page animated gradient sits fixed behind everything
+  (components/site-background.tsx). Content sits on frosted-glass panels.
+  Light + dark themes are driven by the `.dark` class on <html> (next-themes).
+  Components reference tokens via Tailwind utilities (bg-bg, text-fg, ...).
+*/
+
+/* class-based dark variant so `dark:` utilities follow the toggle, not the OS */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* frosted panel surface (sits over the moving gradient) */
+  --bg: rgba(255, 255, 255, 0.66);
+  --bg-elevated: rgba(255, 255, 255, 0.82);
+
+  --fg: #0b1524;
+  --muted: #47566a;
+
+  --line: rgba(11, 21, 36, 0.12);
+  --line-strong: rgba(11, 21, 36, 0.24);
+
+  --accent: #0284c7; /* sky-600 */
+  --accent-dim: rgba(2, 132, 199, 0.12);
+  --accent-contrast: #ffffff;
+
+  --page: #eaf5fc; /* fallback behind the gradient canvas */
+  --veil: rgba(255, 255, 255, 0.25); /* readability wash over the gradient */
+}
+
+.dark {
+  --bg: rgba(15, 23, 36, 0.62);
+  --bg-elevated: rgba(19, 29, 45, 0.8);
+
+  --fg: #eef4fb;
+  --muted: #9fb0c4;
+
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.24);
+
+  --accent: #38bdf8; /* sky-400 reads better on dark */
+  --accent-dim: rgba(56, 189, 248, 0.16);
+  --accent-contrast: #04121f;
+
+  --page: #060d18;
+  --veil: rgba(4, 10, 22, 0.42);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --container-content: 1120px;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--page);
+  color: var(--fg);
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+/* Frosted-glass panel used by nav + content cards */
+.glass {
+  background: var(--bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Blinking terminal caret (hero typewriter panel) */
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret-blink {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping,
+  .animate-bounce {
+    animation: none !important;
+  }
+}
