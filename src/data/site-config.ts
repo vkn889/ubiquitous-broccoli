@@ -47,7 +47,7 @@ export const siteConfig: SiteConfig = {
     ">>> viraat.ship()",
     "deploying: things that help people ... ok",
   ],
-  url: "https://viraat.dev",
+  url: "https://viraatnellutla.me",
   metaDescription:
     "Viraat Nellutla is a student engineer and researcher working at the intersection of biology, programming, and human impact. Founder of the F*Cancer Foundation and a research intern at the University of Washington.",
   ogImage: "/opengraph-image",
