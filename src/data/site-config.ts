@@ -18,7 +18,7 @@ export type SiteConfig = {
   initials: string;
   /** on-page hero chip, e.g. "Biology, Programming & Human Impact" */
   role: string;
-  /** SEO title suffix, comma format: "Researcher, Engineer, Founder" */
+  /** SEO title suffix, comma format: "Innovator, Engineer, Researcher" */
   titleRoles: string;
   /** hero positioning statement, one sentence */
   positioning: string;
@@ -44,7 +44,7 @@ export const siteConfig: SiteConfig = {
   shortName: "Viraat",
   initials: "VKN",
   role: "Biology, Programming & Human Impact",
-  titleRoles: "Researcher, Engineer, Founder",
+  titleRoles: "Innovator, Engineer, Researcher",
   positioning:
     "I build software and machine-learning tools at the intersection of biology, programming, and human impact, helping people understand their health, learn something new, and connect with the people around them.",
   terminalFile: "viraat.py",
@@ -59,7 +59,7 @@ export const siteConfig: SiteConfig = {
   ],
   url: "https://viraatnellutla.me",
   metaDescription:
-    "Researcher, engineer, and founder. Research at the University of Washington, and projects at the intersection of biology, programming, and human impact.",
+    "Innovator, engineer, and researcher. Research at the University of Washington, and projects at the intersection of biology, programming, and human impact.",
   ogImage: "/opengraph-image",
   email: "vkn889@gmail.com",
   region: "Washington",
