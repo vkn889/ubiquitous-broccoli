@@ -1,8 +1,8 @@
 /**
- * Single source of truth for identity, meta tags, and contact links (SRD FR-10, FR-12).
+ * Single source of truth for identity, SEO, and contact links.
  *
- * NOTE: Content below is a best-effort draft assembled from the PRD. Viraat should
- * confirm every claim (titles, dates, handles, URLs) before publishing (PRD 7).
+ * NOTE: Content below is a best-effort draft. Viraat should confirm every
+ * claim (titles, dates, handles, URLs) before publishing.
  */
 
 export type SocialLink = {
@@ -16,7 +16,10 @@ export type SiteConfig = {
   name: string;
   shortName: string;
   initials: string;
+  /** on-page hero chip, e.g. "Biology, Programming & Human Impact" */
   role: string;
+  /** SEO title suffix, comma format: "Researcher, Engineer, Founder" */
+  titleRoles: string;
   /** hero positioning statement, one sentence */
   positioning: string;
   /** filename shown on the hero terminal panel */
@@ -24,9 +27,15 @@ export type SiteConfig = {
   /** lines typed out, one by one, in the hero terminal panel */
   terminalLines: string[];
   url: string;
+  /** ~150 char search-result description */
   metaDescription: string;
   ogImage: string;
   email: string;
+  /** coarse location for structured data */
+  region: string;
+  country: string;
+  /** search keywords */
+  keywords: string[];
   socialLinks: SocialLink[];
 };
 
@@ -35,6 +44,7 @@ export const siteConfig: SiteConfig = {
   shortName: "Viraat",
   initials: "VKN",
   role: "Biology, Programming & Human Impact",
+  titleRoles: "Researcher, Engineer, Founder",
   positioning:
     "I build software and machine-learning tools at the intersection of biology, programming, and human impact, helping people understand their health, learn something new, and connect with the people around them.",
   terminalFile: "viraat.py",
@@ -49,9 +59,32 @@ export const siteConfig: SiteConfig = {
   ],
   url: "https://viraatnellutla.me",
   metaDescription:
-    "Viraat Nellutla is a student engineer and researcher working at the intersection of biology, programming, and human impact. Founder of the F*Cancer Foundation and a research intern at the University of Washington.",
+    "Researcher, engineer, and founder. Research at the University of Washington, and projects at the intersection of biology, programming, and human impact.",
   ogImage: "/opengraph-image",
   email: "vkn889@gmail.com",
+  region: "Washington",
+  country: "US",
+  keywords: [
+    "Viraat Nellutla",
+    "Viraat Nellutla portfolio",
+    "Viraat Nellutla researcher",
+    "researcher",
+    "software engineer",
+    "founder",
+    "computational biology",
+    "machine learning",
+    "bioinformatics",
+    "protein design",
+    "health technology",
+    "health-tech",
+    "F*Cancer Foundation",
+    "University of Washington research",
+    "cryopreservation",
+    "student researcher",
+    "Next.js developer",
+    "TypeScript",
+    "Python",
+  ],
   socialLinks: [
     { label: "GitHub", handle: "@viraatnellutla", url: "https://github.com/viraatnellutla" },
     { label: "LinkedIn", handle: "in/viraatnellutla", url: "https://www.linkedin.com/in/viraatnellutla" },

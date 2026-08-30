@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/site-config";
 
-export const alt = `${siteConfig.name} · ${siteConfig.role}`;
+export const alt = `${siteConfig.name} | ${siteConfig.titleRoles}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,7 +15,8 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "linear-gradient(135deg, #7dd3fc 0%, #ffffff 45%, #38bdf8 100%)",
+          background:
+            "linear-gradient(135deg, #7dd3fc 0%, #ffffff 45%, #38bdf8 100%)",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -39,20 +40,29 @@ export default function OpengraphImage() {
             style={{
               display: "flex",
               color: "#0b1524",
-              fontSize: 88,
+              fontSize: 80,
               fontWeight: 700,
               letterSpacing: -3,
+              lineHeight: 1.05,
             }}
           >
-            {`Hi, I'm ${siteConfig.shortName}.`}
+            {siteConfig.name}
           </div>
-          <div style={{ display: "flex", color: "#334155", fontSize: 30, marginTop: 24 }}>
-            {siteConfig.role}
+          <div
+            style={{
+              display: "flex",
+              color: "#0369a1",
+              fontSize: 34,
+              fontWeight: 600,
+              marginTop: 18,
+            }}
+          >
+            {siteConfig.titleRoles}
           </div>
         </div>
 
-        <div style={{ display: "flex", color: "#334155", fontSize: 24 }}>
-          {siteConfig.positioning.slice(0, 96)}
+        <div style={{ display: "flex", color: "#334155", fontSize: 24, maxWidth: 900 }}>
+          {siteConfig.metaDescription}
         </div>
       </div>
     ),

@@ -3,19 +3,51 @@ import { Footer } from "@/components/footer";
 import { PageHeader } from "@/components/page-header";
 import { Reveal } from "@/components/reveal";
 import { TagList } from "@/components/tag";
+import { JsonLd } from "@/components/json-ld";
+import {
+  graph,
+  webPageSchema,
+  breadcrumbSchema,
+} from "@/lib/structured-data";
 import { bio, education } from "@/data/education";
 import { experience } from "@/data/experience";
 import { siteConfig } from "@/data/site-config";
 
+const description = `The background, education, and work history of ${siteConfig.name}: research at the University of Washington, founding the F*Cancer Foundation, and teaching programming.`;
+
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${siteConfig.name}. Background, education, and work history.`,
+  description,
   alternates: { canonical: "/about" },
+  openGraph: {
+    type: "profile",
+    url: `${siteConfig.url}/about`,
+    title: `About | ${siteConfig.name}`,
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `About | ${siteConfig.name}`,
+    description,
+  },
 };
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={graph(
+          webPageSchema({
+            path: "/about",
+            name: `About | ${siteConfig.name}`,
+            description,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        )}
+      />
       <main>
         <PageHeader
           eyebrow="about"
